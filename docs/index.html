@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dust | Device Unified Serving Toolkit</title>
+  <meta name="description" content="Dust is a multi-platform on-device ML inference framework spanning Capacitor, Kotlin, and Swift runtimes.">
+  <meta property="og:title" content="Dust | Device Unified Serving Toolkit">
+  <meta property="og:description" content="A unified hub for the Dust on-device ML ecosystem across JavaScript, Android, and Apple platforms.">
+  <meta property="og:url" content="https://rogelioruiz.github.io/dust/">
+  <meta property="og:image" content="https://rogelioruiz.github.io/dust/assets/dust_black.png">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0d0d0f">
+  <link rel="icon" type="image/png" href="assets/dust_black.png">
+  <script>document.documentElement.classList.add("has-js");</script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="nav" id="top">
+    <div class="nav__inner shell">
+      <a class="nav__brand" href="#top" aria-label="Dust home">
+        <img class="nav__logo" src="assets/dust_white.png" alt="Dust" width="635" height="194">
+      </a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="nav__menu" id="nav-links" aria-label="Primary navigation">
+        <a class="nav__link" href="#features">Features</a>
+        <a class="nav__link" href="#architecture">Architecture</a>
+        <a class="nav__link" href="#ecosystem">Ecosystem</a>
+        <a class="nav__link" href="#get-started">Get Started</a>
+        <a class="nav__link nav__link--cta" href="https://github.com/rogelioRuiz/dust" target="_blank" rel="noreferrer">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section">
+      <div class="hero__backdrop"></div>
+      <div class="shell hero__layout">
+        <div class="hero__content reveal">
+          <p class="eyebrow">Device Unified Serving Toolkit</p>
+          <h1 class="hero__title">A unified surface for on-device ML across JavaScript, Android, and Apple platforms.</h1>
+          <p class="hero__lede">
+            Dust combines thin bridge packages, shared contracts, and native runtimes so you can ship GGUF, ONNX,
+            embeddings, vector search, and model lifecycle flows with one coherent stack.
+          </p>
+          <div class="hero__actions">
+            <a class="button button--primary" href="https://github.com/rogelioRuiz/dust" target="_blank" rel="noreferrer">View on GitHub</a>
+            <a class="button button--ghost" href="#get-started">Get Started</a>
+          </div>
+          <div class="hero__badges" aria-label="Project summary">
+            <span class="badge">v0.1.0</span>
+            <span class="badge">15 modules</span>
+            <span class="badge">3 platform tiers</span>
+            <span class="badge">MIT + Apache 2.0</span>
+          </div>
+        </div>
+        <div class="hero__visual reveal">
+          <div class="hero__glow" aria-hidden="true"></div>
+          <img class="hero__logo" src="assets/dust_white.png" alt="Dust logo" width="635" height="194">
+          <div class="hero__stats">
+            <div class="metric">
+              <span class="metric__value">5</span>
+              <span class="metric__label">Capacitor bridges</span>
+            </div>
+            <div class="metric">
+              <span class="metric__value">4 + 4</span>
+              <span class="metric__label">Native runtimes</span>
+            </div>
+            <div class="metric">
+              <span class="metric__value">2</span>
+              <span class="metric__label">Core contracts</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="shell">
+        <div class="section__intro reveal">
+          <p class="eyebrow">Features</p>
+          <h2>Built for shipping on-device inference, not stitching together runtime fragments.</h2>
+          <p>Dust keeps bridge code thin, runtime code native, and contracts portable so the same serving model spans app shells and platforms.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="card card--feature reveal">
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v18"></path>
+                <path d="M5 8h14"></path>
+                <path d="M7 12h10"></path>
+                <path d="M9 16h6"></path>
+              </svg>
+            </div>
+            <h3>On-Device Inference</h3>
+            <p>Run locally with native session managers, memory-aware lifecycle controls, and offline-friendly model access.</p>
+          </article>
+          <article class="card card--feature reveal">
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="7" height="16" rx="2"></rect>
+                <rect x="14" y="7" width="7" height="10" rx="2"></rect>
+                <path d="M7 17h0"></path>
+              </svg>
+            </div>
+            <h3>Multi-Platform</h3>
+            <p>Ship one architecture across Capacitor apps, Android/JVM libraries, and iOS/macOS packages.</p>
+          </article>
+          <article class="card card--feature reveal">
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3 3 8l9 5 9-5-9-5Z"></path>
+                <path d="m3 12 9 5 9-5"></path>
+                <path d="m3 16 9 5 9-5"></path>
+              </svg>
+            </div>
+            <h3>Modular Architecture</h3>
+            <p>Adopt the exact layer you need: bridge, runtime, or shared contract package, without dragging the full stack in.</p>
+          </article>
+          <article class="card card--feature reveal">
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 7h16"></path>
+                <path d="M4 12h8"></path>
+                <path d="M4 17h12"></path>
+                <circle cx="18" cy="12" r="3"></circle>
+              </svg>
+            </div>
+            <h3>GGUF &amp; ONNX Support</h3>
+            <p>Cover llama.cpp GGUF workflows and ONNX Runtime pipelines from the same project family.</p>
+          </article>
+          <article class="card card--feature reveal">
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="7" cy="12" r="2"></circle>
+                <circle cx="17" cy="7" r="2"></circle>
+                <circle cx="17" cy="17" r="2"></circle>
+                <path d="m8.8 11 6.4-3"></path>
+                <path d="m8.8 13 6.4 3"></path>
+              </svg>
+            </div>
+            <h3>Embeddings &amp; Vector Search</h3>
+            <p>Tokenizers, embedding services, and vector store contracts are first-class pieces of the platform model.</p>
+          </article>
+          <article class="card card--feature reveal">
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 18a7 7 0 1 1 14 0"></path>
+                <path d="M12 9v4l3 2"></path>
+              </svg>
+            </div>
+            <h3>Model Lifecycle Management</h3>
+            <p>Registries, downloads, verification, status transitions, and ref-counted sessions stay inside the framework.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--accent" id="architecture">
+      <div class="shell">
+        <div class="section__intro reveal">
+          <p class="eyebrow">Architecture</p>
+          <h2>Thin bridges on top, platform-native runtimes underneath, shared contracts at the core.</h2>
+          <p>The bridge layer exposes app-facing APIs while Kotlin and Swift libraries own actual inference, downloads, and model serving behavior.</p>
+        </div>
+        <div class="diagram reveal" aria-label="Dust architecture diagram">
+          <div class="diagram__layer diagram__layer--bridge">
+            <div class="diagram__label">Bridge Layer</div>
+            <div class="diagram__chips">
+              <span class="chip chip--js">capacitor-core</span>
+              <span class="chip chip--js">capacitor-embeddings</span>
+              <span class="chip chip--js">capacitor-llm</span>
+              <span class="chip chip--js">capacitor-onnx</span>
+              <span class="chip chip--js">capacitor-serve</span>
+            </div>
+          </div>
+          <div class="diagram__layer diagram__layer--runtime">
+            <div class="diagram__label">Native Runtimes</div>
+            <div class="diagram__split">
+              <div class="diagram__column">
+                <h3>Kotlin / Android</h3>
+                <div class="diagram__chips">
+                  <span class="chip chip--kotlin">dust-embeddings-kotlin</span>
+                  <span class="chip chip--kotlin">dust-llm-kotlin</span>
+                  <span class="chip chip--kotlin">dust-onnx-kotlin</span>
+                  <span class="chip chip--kotlin">dust-serve-kotlin</span>
+                </div>
+              </div>
+              <div class="diagram__column">
+                <h3>Swift / Apple</h3>
+                <div class="diagram__chips">
+                  <span class="chip chip--swift">dust-embeddings-swift</span>
+                  <span class="chip chip--swift">dust-llm-swift</span>
+                  <span class="chip chip--swift">dust-onnx-swift</span>
+                  <span class="chip chip--swift">dust-serve-swift</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="diagram__layer diagram__layer--core">
+            <div class="diagram__label">Core Contracts</div>
+            <div class="diagram__chips">
+              <span class="chip chip--core">dust-core-kotlin</span>
+              <span class="chip chip--core">dust-core-swift</span>
+              <span class="chip chip--core chip--core-wide">ModelServer</span>
+              <span class="chip chip--core chip--core-wide">ModelSession</span>
+              <span class="chip chip--core chip--core-wide">VectorStore</span>
+              <span class="chip chip--core chip--core-wide">EmbeddingService</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ecosystem">
+      <div class="shell">
+        <div class="section__intro reveal">
+          <p class="eyebrow">Ecosystem</p>
+          <h2>Fifteen packages. One serving model.</h2>
+          <p>The ecosystem spans bridge packages, platform-native runtimes, and portable core contracts designed to compose cleanly.</p>
+        </div>
+        <div class="tabs tabs--filters reveal" role="toolbar" aria-label="Filter packages">
+          <button class="tabs__button is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="tabs__button" type="button" data-filter="bridge" aria-pressed="false">Capacitor Bridge</button>
+          <button class="tabs__button" type="button" data-filter="kotlin" aria-pressed="false">Kotlin</button>
+          <button class="tabs__button" type="button" data-filter="swift" aria-pressed="false">Swift</button>
+        </div>
+        <div class="module-grid">
+          <article class="card card--module reveal" data-platform="bridge">
+            <span class="platform platform--js">Capacitor</span>
+            <h3><code>capacitor-core</code></h3>
+            <p>Shared bridge-facing ML contracts, interfaces, and value types for Dust plugins.</p>
+            <a href="https://github.com/rogelioRuiz/capacitor-core" target="_blank" rel="noreferrer">View on GitHub &rarr;</a>
+          </article>
+          <article class="card card--module reveal" data-platform="bridge">
+            <span class="platform platform--js">Capacitor</span>
+            <h3><code>capacitor-embeddings</code></h3>
+            <p>On-device embedding model tokenization and inference for Capacitor apps.</p>
+            <a href="https://github.com/rogelioRuiz/capacitor-embeddings" target="_blank" rel="noreferrer">View on GitHub &rarr;</a>
+          </article>
+          <article class="card card--module reveal" data-platform="bridge">
+            <span class="platform platform--js">Capacitor</span>
+            <h3><code>capacitor-llm</code></h3>
+            <p>Current JavaScript bridge for on-device GGUF and llama.cpp inference.</p>
+            <a href="https://github.com/rogelioRuiz/capacitor-llm" target="_blank" rel="noreferrer">View on GitHub &rarr;</a>
+          </article>
+          <article class="card card--module reveal" data-platform="bridge">
+            <span class="platform platform--js">Capacitor</span>
+            <h3><code>capacitor-onnx</code></h3>
+            <p>Current JavaScript bridge for ONNX Runtime loading, preprocessing, and inference.</p>
+            <a href="https://github.com/rogelioRuiz/capacitor-onnx" target="_blank" rel="noreferrer">View on GitHub &rarr;</a>
+          </article>
+          <article class="card card--module reveal" data-platform="bridge">
+            <span class="platform platform--js">Capacitor</span>
+            <h3><code>capacitor-serve</code></h3>
+            <p>Downloads, registry, sessions, and model lifecycle management for Capacitor hosts.</p>
+            <a href="https://github.com/rogelioRuiz/capacitor-serve" target="_blank" rel="noreferrer">View on GitHub &rarr;</a>
+          </article>
+
+          <article class="card card--module reveal" data-platform="kotlin">
+            <span class="platform platform--kotlin">Kotlin</span>
+            <h3><code>dust-core-kotlin</code></h3>
+            <p>Core contracts and service abstractions for Android and JVM consumers.</p>
+            <a href="https://github.com/rogelioRuiz/dust-core-kotlin" target="_blank" rel="noreferrer">View on GitHub &rarr;</a>
+          </article>
+          <article class="card card--module reveal" data-platform="kotlin">
+            <span class="platform platform--kotlin">Kotlin</span>
+            <h3><code>dust-embeddings-kotlin</code></h3>
+            <p>Embedding and tokenizer runtime primitives for Android.</p>
+            <a href="https://github.com/rogelioRuiz/dust-embeddings-kotlin" target="_blank" rel="noreferrer">View on GitHub &rarr;</a>
+          </article>
+          <article class="card card--module reveal" data-platform="kotlin">
+            <span class="platform platform--kotlin">Kotlin</span>
+            <h3><code>dust-llm-kotlin</code></h3>
+            <p>Kotlin-native LLM runtime and GGUF session integrations.</p>
+            <a href="https://github.com/rogelioRuiz/dust-llm-kotlin" target="_blank" rel="noreferrer">View on GitHub &rarr;</a>
+          </article>
+          <article class="card card--module reveal" data-platform="kotlin">
+            <span class="platform platform--kotlin">Kotlin</span>
+            <h3><code>dust-onnx-kotlin</code></h3>
+            <p>ONNX Runtime session management and tensor preprocessing for Android.</p>
+            <a href="https://github.com/rogelioRuiz/dust-onnx-kotlin" target="_blank" rel="noreferrer">View on GitHub &rarr;</a>
+          </article>
+          <article class="card card--module reveal" data-platform="kotlin">
+            <span class="platform platform--kotlin">Kotlin</span>
+            <h3><code>dust-serve-kotlin</code></h3>
+            <p>Model registry, downloads, and session lifecycle services for Android.</p>
+            <a href="https://github.com/rogelioRuiz/dust-serve-kotlin" target="_blank" rel="noreferrer">View on GitHub &rarr;</a>
+          </article>
+
+          <article class="card card--module reveal" data-platform="swift">
+            <span class="platform platform--swift">Swift</span>
+            <h3><code>dust-core-swift</code></h3>
+            <p>Core protocol and contract types for Swift consumers.</p>
+            <a href="https://github.com/rogelioRuiz/dust-core-swift" target="_blank" rel="noreferrer">View on GitHub &rarr;</a>
+          </article>
+          <article class="card card--module reveal" data-platform="swift">
+            <span class="platform platform--swift">Swift</span>
+            <h3><code>dust-embeddings-swift</code></h3>
+            <p>Tokenizers and embedding runtime primitives for iOS and macOS.</p>
+            <a href="https://github.com/rogelioRuiz/dust-embeddings-swift" target="_blank" rel="noreferrer">View on GitHub &rarr;</a>
+          </article>
+          <article class="card card--module reveal" data-platform="swift">
+            <span class="platform platform--swift">Swift</span>
+            <h3><code>dust-llm-swift</code></h3>
+            <p>GGUF, llama.cpp inference, and chat runtime for iOS and macOS.</p>
+            <a href="https://github.com/rogelioRuiz/dust-llm-swift" target="_blank" rel="noreferrer">View on GitHub &rarr;</a>
+          </article>
+          <article class="card card--module reveal" data-platform="swift">
+            <span class="platform platform--swift">Swift</span>
+            <h3><code>dust-onnx-swift</code></h3>
+            <p>ONNX Runtime session management and preprocessing for Apple platforms.</p>
+            <a href="https://github.com/rogelioRuiz/dust-onnx-swift" target="_blank" rel="noreferrer">View on GitHub &rarr;</a>
+          </article>
+          <article class="card card--module reveal" data-platform="swift">
+            <span class="platform platform--swift">Swift</span>
+            <h3><code>dust-serve-swift</code></h3>
+            <p>Model registry, downloads, and serving lifecycle services for Swift apps.</p>
+            <a href="https://github.com/rogelioRuiz/dust-serve-swift" target="_blank" rel="noreferrer">View on GitHub &rarr;</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--accent" id="get-started">
+      <div class="shell">
+        <div class="section__intro reveal">
+          <p class="eyebrow">Get Started</p>
+          <h2>Drop into the layer you need, from a bridge package to a native core library.</h2>
+          <p>These snippets mirror the manifests already in this workspace. They favor the current mono-repo layout and package names over hypothetical publish targets.</p>
+        </div>
+        <div class="install reveal">
+          <div class="tabs tabs--install" role="tablist" aria-label="Installation targets">
+            <button class="tabs__button is-active" type="button" id="tab-npm" data-tab="npm" role="tab" aria-selected="true" aria-controls="panel-npm">npm</button>
+            <button class="tabs__button" type="button" id="tab-gradle" data-tab="gradle" role="tab" aria-selected="false" aria-controls="panel-gradle">Gradle</button>
+            <button class="tabs__button" type="button" id="tab-spm" data-tab="spm" role="tab" aria-selected="false" aria-controls="panel-spm">SPM</button>
+            <button class="tabs__button" type="button" id="tab-cocoapods" data-tab="cocoapods" role="tab" aria-selected="false" aria-controls="panel-cocoapods">CocoaPods</button>
+          </div>
+
+          <section class="install__panel" id="panel-npm" data-panel="npm" role="tabpanel" aria-labelledby="tab-npm" tabindex="0">
+            <button class="copy-button" type="button" aria-label="Copy npm install command">Copy</button>
+            <pre><code><span class="token token--comment"># Capacitor bridge packages</span>
+npm install @dust/capacitor-core @dust/capacitor-llm @dust/capacitor-serve
+npx cap sync</code></pre>
+          </section>
+
+          <section class="install__panel" id="panel-gradle" data-panel="gradle" role="tabpanel" aria-labelledby="tab-gradle" tabindex="0" hidden>
+            <button class="copy-button" type="button" aria-label="Copy Gradle dependency snippet">Copy</button>
+            <pre><code><span class="token token--comment">// settings.gradle</span>
+include(":dust-core-kotlin")
+project(":dust-core-kotlin").projectDir = file("../dust-core-kotlin")
+
+<span class="token token--comment">// app/build.gradle</span>
+dependencies {
+    implementation(project(":dust-core-kotlin"))
+}</code></pre>
+          </section>
+
+          <section class="install__panel" id="panel-spm" data-panel="spm" role="tabpanel" aria-labelledby="tab-spm" tabindex="0" hidden>
+            <button class="copy-button" type="button" aria-label="Copy Swift Package Manager snippet">Copy</button>
+            <pre><code><span class="token token--comment">// Package.swift</span>
+.package(name: "DustCapacitorCore", path: "../capacitor-core"),
+.package(name: "dust-core-swift", path: "../dust-core-swift"),
+.package(name: "DustCapacitorLlm", path: "../capacitor-llm"),
+
+<span class="token token--comment">// Target dependencies</span>
+.product(name: "DustCapacitorCore", package: "DustCapacitorCore"),
+.product(name: "DustCore", package: "dust-core-swift"),
+.product(name: "DustCapacitorLlm", package: "DustCapacitorLlm"),</code></pre>
+          </section>
+
+          <section class="install__panel" id="panel-cocoapods" data-panel="cocoapods" role="tabpanel" aria-labelledby="tab-cocoapods" tabindex="0" hidden>
+            <button class="copy-button" type="button" aria-label="Copy CocoaPods snippet">Copy</button>
+            <pre><code><span class="token token--comment"># Podfile</span>
+pod 'DustCore', :path =&gt; '../dust-core-swift'
+pod 'DustCapacitorCore', :path =&gt; '../capacitor-core'
+pod 'DustCapacitorLlm', :path =&gt; '../capacitor-llm'</code></pre>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer__grid">
+      <div class="footer__brand">
+        <img src="assets/dust_white.png" alt="Dust" width="635" height="194" class="footer__logo">
+        <p>Dust is the central hub for a modular, multi-platform on-device ML toolchain.</p>
+      </div>
+      <div>
+        <h3>Project</h3>
+        <a href="#features">Features</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#ecosystem">Ecosystem</a>
+      </div>
+      <div>
+        <h3>Platforms</h3>
+        <a href="https://github.com/rogelioRuiz/capacitor-llm" target="_blank" rel="noreferrer">Capacitor / JS</a>
+        <a href="https://github.com/rogelioRuiz/dust-core-kotlin" target="_blank" rel="noreferrer">Kotlin / Android</a>
+        <a href="https://github.com/rogelioRuiz/dust-core-swift" target="_blank" rel="noreferrer">Swift / Apple</a>
+      </div>
+      <div>
+        <h3>Developer</h3>
+        <a href="https://github.com/rogelioRuiz/dust" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://github.com/rogelioRuiz" target="_blank" rel="noreferrer">rogelioRuiz</a>
+        <p class="footer__meta">Built by T6X / Techxagon.</p>
+      </div>
+    </div>
+    <div class="shell footer__bar">
+      <p>Licensing varies by module: standalone core libraries ship Apache 2.0, while several bridge packages document MIT.</p>
+      <p>&copy; <span id="year">2026</span> Dust</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

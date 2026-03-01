@@ -1,0 +1,41 @@
+# Build outputs
+build/
+.build/
+.gradle/
+DerivedData/
+
+# Dependencies
+node_modules/
+
+# IDE
+.idea/
+*.xcworkspace/
+*.xcodeproj/xcuserdata/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Claude Code workspace
+.claude/
+
+# Environment
+.env
+.env.local
+
+# Module repos (managed separately)
+capacitor-core/
+capacitor-embeddings/
+capacitor-llm/
+capacitor-onnx/
+capacitor-serve/
+dust-core-kotlin/
+dust-core-swift/
+dust-embeddings-kotlin/
+dust-embeddings-swift/
+dust-llm-kotlin/
+dust-llm-swift/
+dust-onnx-kotlin/
+dust-onnx-swift/
+dust-serve-kotlin/
+dust-serve-swift/
