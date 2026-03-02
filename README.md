@@ -44,11 +44,11 @@ The framework ships as 15 packages across three tiers. Each package lives in its
 
 | Package | npm | Purpose |
 | --- | --- | --- |
-| [capacitor-core](./capacitor-core/README.md) | `@dust/capacitor-core` | Shared bridge-facing ML contracts, interfaces, and value types. |
-| [capacitor-llm](./capacitor-llm/README.md) | `@dust/capacitor-llm` | JavaScript bridge for on-device GGUF/llama.cpp inference. |
-| [capacitor-onnx](./capacitor-onnx/README.md) | `@dust/capacitor-onnx` | JavaScript bridge for ONNX Runtime loading, preprocessing, and inference. |
-| [capacitor-serve](./capacitor-serve/README.md) | `@dust/capacitor-serve` | JavaScript bridge for downloads, registry, sessions, and model lifecycle. |
-| [capacitor-embeddings](./capacitor-embeddings/README.md) | `@dust/capacitor-embeddings` | JavaScript bridge for tokenization and embedding inference. |
+| [capacitor-core](./capacitor-core/README.md) | `dust-core-capacitor` | Shared bridge-facing ML contracts, interfaces, and value types. |
+| [capacitor-llm](./capacitor-llm/README.md) | `dust-llm-capacitor` | JavaScript bridge for on-device GGUF/llama.cpp inference. |
+| [capacitor-onnx](./capacitor-onnx/README.md) | `dust-onnx-capacitor` | JavaScript bridge for ONNX Runtime loading, preprocessing, and inference. |
+| [capacitor-serve](./capacitor-serve/README.md) | `dust-serve-capacitor` | JavaScript bridge for downloads, registry, sessions, and model lifecycle. |
+| [capacitor-embeddings](./capacitor-embeddings/README.md) | `dust-embeddings-capacitor` | JavaScript bridge for tokenization and embedding inference. |
 
 ### Kotlin Libraries — Android / JVM
 
@@ -102,7 +102,7 @@ The three tiers compose vertically: bridge packages expose app-facing APIs, nati
 ### Capacitor / npm
 
 ```bash
-npm install @dust/capacitor-core @dust/capacitor-llm @dust/capacitor-serve
+npm install dust-core-capacitor dust-llm-capacitor dust-serve-capacitor
 npx cap sync
 ```
 

@@ -41,11 +41,12 @@
       <div class="hero__backdrop"></div>
       <div class="shell hero__layout">
         <div class="hero__content reveal">
-          <p class="eyebrow">Device Unified Serving Toolkit</p>
-          <h1 class="hero__title">A unified surface for on-device ML across JavaScript, Android, and Apple platforms.</h1>
+          <p class="eyebrow">On-Device ML Infrastructure</p>
+          <h1 class="hero__title">Everyone has a device. Not everyone has a cloud.</h1>
           <p class="hero__lede">
-            Dust combines thin bridge packages, shared contracts, and native runtimes so you can ship GGUF, ONNX,
-            embeddings, vector search, and model lifecycle flows with one coherent stack.
+            Three billion phones already have the compute to run ML models, serve inference,
+            and host autonomous agents. What they've never had is the infrastructure.
+            Dust is that infrastructure — the serving layer underneath that everything else stands on.
           </p>
           <div class="hero__actions">
             <a class="button button--primary" href="https://github.com/rogelioRuiz/dust" target="_blank" rel="noreferrer">View on GitHub</a>
@@ -55,12 +56,13 @@
             <span class="badge">v0.1.0</span>
             <span class="badge">15 modules</span>
             <span class="badge">3 platform tiers</span>
-            <span class="badge">MIT + Apache 2.0</span>
+            <span class="badge">Apache 2.0</span>
           </div>
         </div>
         <div class="hero__visual reveal">
           <div class="hero__glow" aria-hidden="true"></div>
           <img class="hero__logo" src="assets/dust_white.png" alt="Dust logo" width="635" height="194">
+          <p class="hero__acronym">Device Unified Serving Toolkit</p>
           <div class="hero__stats">
             <div class="metric">
               <span class="metric__value">5</span>
@@ -344,7 +346,7 @@
           <section class="install__panel" id="panel-npm" data-panel="npm" role="tabpanel" aria-labelledby="tab-npm" tabindex="0">
             <button class="copy-button" type="button" aria-label="Copy npm install command">Copy</button>
             <pre><code><span class="token token--comment"># Capacitor bridge packages</span>
-npm install @dust/capacitor-core @dust/capacitor-llm @dust/capacitor-serve
+npm install dust-core-capacitor dust-llm-capacitor dust-serve-capacitor
 npx cap sync</code></pre>
           </section>
 
