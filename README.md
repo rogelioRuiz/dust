@@ -20,6 +20,18 @@
   <img alt="Packages" src="https://img.shields.io/badge/packages-15-success">
 </p>
 
+<p align="center">
+  <a href="https://github.com/rogelioRuiz/dust/actions/workflows/ci-kotlin.yml">
+    <img alt="CI Kotlin" src="https://github.com/rogelioRuiz/dust/actions/workflows/ci-kotlin.yml/badge.svg?branch=main">
+  </a>
+  <a href="https://github.com/rogelioRuiz/dust/actions/workflows/ci-swift.yml">
+    <img alt="CI Swift" src="https://github.com/rogelioRuiz/dust/actions/workflows/ci-swift.yml/badge.svg?branch=main">
+  </a>
+  <a href="https://github.com/rogelioRuiz/dust/actions/workflows/ci-capacitor.yml">
+    <img alt="CI Capacitor" src="https://github.com/rogelioRuiz/dust/actions/workflows/ci-capacitor.yml/badge.svg?branch=main">
+  </a>
+</p>
+
 ---
 
 dust is a modular framework for building on-device ML applications around reusable native runtimes and thin integration layers. This repository brings together shared contracts, model lifecycle tooling, ONNX inference, embeddings, and LLM runtimes across Kotlin and Swift, with a first bridge layer for JavaScript-based apps. Those bridge packages currently target Capacitor, but the same native services can be thin-wrapped for React Native, Flutter, or other host technologies.

@@ -1,0 +1,145 @@
+name: CI — Kotlin
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'dust-core-kotlin/**'
+      - 'dust-llm-kotlin/**'
+      - 'dust-onnx-kotlin/**'
+      - 'dust-embeddings-kotlin/**'
+      - 'dust-serve-kotlin/**'
+      - '.github/workflows/ci-kotlin.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'dust-core-kotlin/**'
+      - 'dust-llm-kotlin/**'
+      - 'dust-onnx-kotlin/**'
+      - 'dust-embeddings-kotlin/**'
+      - 'dust-serve-kotlin/**'
+      - '.github/workflows/ci-kotlin.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: ci-kotlin-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Kotlin unit tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout dust-core-kotlin
+        uses: actions/checkout@v4
+        with:
+          repository: rogelioRuiz/dust-core-kotlin
+          path: dust-core-kotlin
+
+      - name: Checkout dust-llm-kotlin
+        uses: actions/checkout@v4
+        with:
+          repository: rogelioRuiz/dust-llm-kotlin
+          path: dust-llm-kotlin
+
+      - name: Checkout dust-onnx-kotlin
+        uses: actions/checkout@v4
+        with:
+          repository: rogelioRuiz/dust-onnx-kotlin
+          path: dust-onnx-kotlin
+
+      - name: Checkout dust-embeddings-kotlin
+        uses: actions/checkout@v4
+        with:
+          repository: rogelioRuiz/dust-embeddings-kotlin
+          path: dust-embeddings-kotlin
+
+      - name: Checkout dust-serve-kotlin
+        uses: actions/checkout@v4
+        with:
+          repository: rogelioRuiz/dust-serve-kotlin
+          path: dust-serve-kotlin
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Cache Gradle
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/wrapper
+            ~/.gradle/caches
+          key: gradle-${{ runner.os }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties', '**/*.gradle', '**/*.gradle.kts') }}
+          restore-keys: |
+            gradle-${{ runner.os }}-
+
+      - name: Install Android SDK platform 36
+        run: |
+          yes | "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" \
+            "platforms;android-36" \
+            "build-tools;36.0.0" 2>&1 | tail -5
+
+      # Pure JVM library (java-library plugin). Test report path differs from Android modules.
+      - name: Test dust-core-kotlin
+        working-directory: dust-core-kotlin
+        run: ./gradlew test --no-daemon --stacktrace
+
+      - name: Upload dust-core-kotlin results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-dust-core-kotlin
+          path: dust-core-kotlin/build/reports/tests/test/
+
+      # Android library. Unit tests mock the JNI layer — NDK not required.
+      - name: Test dust-llm-kotlin
+        working-directory: dust-llm-kotlin
+        run: ./gradlew test --no-daemon --stacktrace
+
+      - name: Upload dust-llm-kotlin results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-dust-llm-kotlin
+          path: dust-llm-kotlin/build/reports/tests/testDebugUnitTest/
+
+      # Android library. Uses Robolectric for android.graphics.Bitmap access.
+      # robolectric.properties pins sdk=34 to avoid Java 17 reflective access issues.
+      - name: Test dust-onnx-kotlin
+        working-directory: dust-onnx-kotlin
+        run: ./gradlew test --no-daemon --stacktrace
+
+      - name: Upload dust-onnx-kotlin results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-dust-onnx-kotlin
+          path: dust-onnx-kotlin/build/reports/tests/testDebugUnitTest/
+
+      # Android library. Depends on dust-llm and dust-onnx from Maven Central.
+      - name: Test dust-embeddings-kotlin
+        working-directory: dust-embeddings-kotlin
+        run: ./gradlew test --no-daemon --stacktrace
+
+      - name: Upload dust-embeddings-kotlin results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-dust-embeddings-kotlin
+          path: dust-embeddings-kotlin/build/reports/tests/testDebugUnitTest/
+
+      # Android library with WorkManager. JVM unit tests only.
+      - name: Test dust-serve-kotlin
+        working-directory: dust-serve-kotlin
+        run: ./gradlew test --no-daemon --stacktrace
+
+      - name: Upload dust-serve-kotlin results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-dust-serve-kotlin
+          path: dust-serve-kotlin/build/reports/tests/testDebugUnitTest/

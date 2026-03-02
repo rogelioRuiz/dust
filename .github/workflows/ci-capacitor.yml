@@ -1,0 +1,111 @@
+name: CI — Capacitor
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'capacitor-core/**'
+      - 'capacitor-llm/**'
+      - 'capacitor-onnx/**'
+      - 'capacitor-serve/**'
+      - 'capacitor-embeddings/**'
+      - '.github/workflows/ci-capacitor.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'capacitor-core/**'
+      - 'capacitor-llm/**'
+      - 'capacitor-onnx/**'
+      - 'capacitor-serve/**'
+      - 'capacitor-embeddings/**'
+      - '.github/workflows/ci-capacitor.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: ci-capacitor-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Modules with vitest unit tests.
+  test:
+    name: Test ${{ matrix.module }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - module: capacitor-core
+            repository: rogelioRuiz/dust-core-capacitor
+          - module: capacitor-serve
+            repository: rogelioRuiz/dust-serve-capacitor
+
+    steps:
+      - name: Checkout ${{ matrix.module }}
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ matrix.repository }}
+          path: ${{ matrix.module }}
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: ${{ matrix.module }}/package-lock.json
+
+      - name: Install dependencies
+        working-directory: ${{ matrix.module }}
+        run: npm ci
+
+      - name: Run tests
+        working-directory: ${{ matrix.module }}
+        run: npm test
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-${{ matrix.module }}
+          path: ${{ matrix.module }}/test-results/
+          if-no-files-found: ignore
+
+  # Modules without test scripts. Verify TypeScript compilation and Biome linting.
+  build-lint:
+    name: Build + lint ${{ matrix.module }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - module: capacitor-llm
+            repository: rogelioRuiz/dust-llm-capacitor
+          - module: capacitor-onnx
+            repository: rogelioRuiz/dust-onnx-capacitor
+          - module: capacitor-embeddings
+            repository: rogelioRuiz/dust-embeddings-capacitor
+
+    steps:
+      - name: Checkout ${{ matrix.module }}
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ matrix.repository }}
+          path: ${{ matrix.module }}
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: ${{ matrix.module }}/package-lock.json
+
+      - name: Install dependencies
+        working-directory: ${{ matrix.module }}
+        run: npm ci
+
+      - name: Build (TypeScript)
+        working-directory: ${{ matrix.module }}
+        run: npm run build
+
+      - name: Lint (Biome)
+        working-directory: ${{ matrix.module }}
+        run: npm run lint
