@@ -986,6 +986,10 @@ code {
     grid-template-columns: 22rem 1fr;
   }
 
+  #demo-onnx .demo-layout {
+    grid-template-columns: 1fr 22rem;
+  }
+
   .demo-video {
     max-width: none;
   }
