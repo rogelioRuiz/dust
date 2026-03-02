@@ -90,9 +90,54 @@
           <p class="eyebrow">Demo</p>
           <h2>Qwen running on-device via Dust — no server, no cloud.</h2>
         </div>
-        <div class="demo-video reveal">
-          <video src="assets/android-qwen-e2e.mp4" autoplay loop muted playsinline
-            aria-label="Demo: Qwen LLM running on-device via Dust on Android"></video>
+        <div class="demo-layout reveal">
+          <div class="demo-video">
+            <video src="assets/ios-qwen-e2e-clip.mp4" autoplay loop muted playsinline
+              aria-label="Demo: Qwen LLM running on-device via Dust on iOS"></video>
+          </div>
+          <div class="demo-steps">
+            <p class="demo-steps__label">Run it yourself in 3 commands</p>
+            <ol class="demo-steps__list">
+              <li>
+                <pre><code>git clone https://github.com/rogelioRuiz/dust-llm-capacitor.git</code></pre>
+              </li>
+              <li>
+                <pre><code>cd dust-llm-capacitor</code></pre>
+              </li>
+              <li>
+                <pre><code>npm install &amp;&amp; npm run test:ios</code></pre>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--demo" id="demo-onnx">
+      <div class="shell">
+        <div class="section__intro reveal">
+          <p class="eyebrow">Demo</p>
+          <h2>YOLO object detection running on-device via Dust — no server, no cloud.</h2>
+        </div>
+        <div class="demo-layout reveal">
+          <div class="demo-video">
+            <img src="assets/yolo-e2e-android.png" alt="Demo: YOLO object detection running on-device via Dust on Android"
+              style="display:block;width:100%;height:auto;border-radius:var(--radius-md);box-shadow:0 0 0 1px var(--color-line),var(--shadow-soft);">
+          </div>
+          <div class="demo-steps">
+            <p class="demo-steps__label">Run it yourself in 3 commands</p>
+            <ol class="demo-steps__list">
+              <li>
+                <pre><code>git clone https://github.com/rogelioRuiz/dust-onnx-capacitor.git</code></pre>
+              </li>
+              <li>
+                <pre><code>cd dust-onnx-capacitor</code></pre>
+              </li>
+              <li>
+                <pre><code>npm install &amp;&amp; npm run test:android</code></pre>
+              </li>
+            </ol>
+          </div>
         </div>
       </div>
     </section>
