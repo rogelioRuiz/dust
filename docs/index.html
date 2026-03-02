@@ -27,9 +27,11 @@
         <span></span>
       </button>
       <nav class="nav__menu" id="nav-links" aria-label="Primary navigation">
+        <a class="nav__link" href="#demo">Demo</a>
         <a class="nav__link" href="#features">Features</a>
         <a class="nav__link" href="#architecture">Architecture</a>
         <a class="nav__link" href="#ecosystem">Ecosystem</a>
+        <a class="nav__link" href="#cloud-equiv">vs Cloud</a>
         <a class="nav__link" href="#get-started">Get Started</a>
         <a class="nav__link nav__link--cta" href="https://github.com/rogelioRuiz/dust" target="_blank" rel="noreferrer">GitHub</a>
       </nav>
@@ -48,6 +50,7 @@
             and host autonomous agents. What they've never had is the infrastructure.
             Dust is that infrastructure — the serving layer underneath that everything else stands on.
           </p>
+          <p class="hero__hook"><em>Think CUDA, but for the three billion devices that already exist.</em></p>
           <div class="hero__actions">
             <a class="button button--primary" href="https://github.com/rogelioRuiz/dust" target="_blank" rel="noreferrer">View on GitHub</a>
             <a class="button button--ghost" href="#get-started">Get Started</a>
@@ -65,18 +68,31 @@
           <p class="hero__acronym">Device Unified Serving Toolkit</p>
           <div class="hero__stats">
             <div class="metric">
-              <span class="metric__value">5</span>
-              <span class="metric__label">Capacitor bridges</span>
+              <span class="metric__value">15</span>
+              <span class="metric__label">Open-source modules</span>
             </div>
             <div class="metric">
-              <span class="metric__value">4 + 4</span>
-              <span class="metric__label">Native runtimes</span>
+              <span class="metric__value">3</span>
+              <span class="metric__label">Platform tiers</span>
             </div>
             <div class="metric">
-              <span class="metric__value">2</span>
-              <span class="metric__label">Core contracts</span>
+              <span class="metric__value">0</span>
+              <span class="metric__label">Cloud dependencies</span>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--demo" id="demo">
+      <div class="shell">
+        <div class="section__intro reveal">
+          <p class="eyebrow">Demo</p>
+          <h2>Qwen running on-device via Dust — no server, no cloud.</h2>
+        </div>
+        <div class="demo-video reveal">
+          <video src="assets/android-qwen-e2e.mp4" autoplay loop muted playsinline
+            aria-label="Demo: Qwen LLM running on-device via Dust on Android"></video>
         </div>
       </div>
     </section>
@@ -333,7 +349,7 @@
         <div class="section__intro reveal">
           <p class="eyebrow">Get Started</p>
           <h2>Drop into the layer you need, from a bridge package to a native core library.</h2>
-          <p>These snippets mirror the manifests already in this workspace. They favor the current mono-repo layout and package names over hypothetical publish targets.</p>
+          <p>Pick the layer you need and install from the published registry.</p>
         </div>
         <div class="install reveal">
           <div class="tabs tabs--install" role="tablist" aria-label="Installation targets">
@@ -352,36 +368,75 @@ npx cap sync</code></pre>
 
           <section class="install__panel" id="panel-gradle" data-panel="gradle" role="tabpanel" aria-labelledby="tab-gradle" tabindex="0" hidden>
             <button class="copy-button" type="button" aria-label="Copy Gradle dependency snippet">Copy</button>
-            <pre><code><span class="token token--comment">// settings.gradle</span>
-include(":dust-core-kotlin")
-project(":dust-core-kotlin").projectDir = file("../dust-core-kotlin")
-
-<span class="token token--comment">// app/build.gradle</span>
+            <pre><code><span class="token token--comment">// app/build.gradle</span>
 dependencies {
-    implementation(project(":dust-core-kotlin"))
+    implementation("io.t6x.dust:dust-core-kotlin:0.1.0")
+    implementation("io.t6x.dust:dust-llm-kotlin:0.1.0")
+    implementation("io.t6x.dust:dust-serve-kotlin:0.1.0")
 }</code></pre>
           </section>
 
           <section class="install__panel" id="panel-spm" data-panel="spm" role="tabpanel" aria-labelledby="tab-spm" tabindex="0" hidden>
             <button class="copy-button" type="button" aria-label="Copy Swift Package Manager snippet">Copy</button>
             <pre><code><span class="token token--comment">// Package.swift</span>
-.package(name: "DustCapacitorCore", path: "../capacitor-core"),
-.package(name: "dust-core-swift", path: "../dust-core-swift"),
-.package(name: "DustCapacitorLlm", path: "../capacitor-llm"),
+.package(url: "https://github.com/rogelioRuiz/dust-core-swift", from: "0.1.0"),
+.package(url: "https://github.com/rogelioRuiz/dust-llm-swift", from: "0.1.0"),
+.package(url: "https://github.com/rogelioRuiz/dust-serve-swift", from: "0.1.0"),
 
 <span class="token token--comment">// Target dependencies</span>
-.product(name: "DustCapacitorCore", package: "DustCapacitorCore"),
 .product(name: "DustCore", package: "dust-core-swift"),
-.product(name: "DustCapacitorLlm", package: "DustCapacitorLlm"),</code></pre>
+.product(name: "DustLlm", package: "dust-llm-swift"),
+.product(name: "DustServe", package: "dust-serve-swift"),</code></pre>
           </section>
 
           <section class="install__panel" id="panel-cocoapods" data-panel="cocoapods" role="tabpanel" aria-labelledby="tab-cocoapods" tabindex="0" hidden>
             <button class="copy-button" type="button" aria-label="Copy CocoaPods snippet">Copy</button>
             <pre><code><span class="token token--comment"># Podfile</span>
-pod 'DustCore', :path =&gt; '../dust-core-swift'
-pod 'DustCapacitorCore', :path =&gt; '../capacitor-core'
-pod 'DustCapacitorLlm', :path =&gt; '../capacitor-llm'</code></pre>
+pod 'DustCore', '~&gt; 0.1.0'
+pod 'DustCapacitorCore', '~&gt; 0.1.0'
+pod 'DustCapacitorLlm', '~&gt; 0.1.0'</code></pre>
           </section>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="cloud-equiv">
+      <div class="shell">
+        <div class="section__intro reveal">
+          <p class="eyebrow">If you know the cloud stack</p>
+          <h2>Dust is the on-device equivalent of the tools you already use.</h2>
+          <p>Every piece of the cloud ML stack has a device-native counterpart in Dust — same concepts, no server required.</p>
+        </div>
+        <div class="reveal">
+          <table class="equiv-table">
+            <thead>
+              <tr>
+                <th>Cloud</th>
+                <th>Dust equivalent</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>CUDA</td>
+                <td><code>dust-core</code></td>
+              </tr>
+              <tr>
+                <td>vLLM / Triton</td>
+                <td><code>dust-serve</code></td>
+              </tr>
+              <tr>
+                <td>TensorRT</td>
+                <td><code>dust-onnx</code></td>
+              </tr>
+              <tr>
+                <td>vLLM engine</td>
+                <td><code>dust-llm</code></td>
+              </tr>
+              <tr>
+                <td>TEI</td>
+                <td><code>dust-embeddings</code></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
@@ -413,7 +468,7 @@ pod 'DustCapacitorLlm', :path =&gt; '../capacitor-llm'</code></pre>
       </div>
     </div>
     <div class="shell footer__bar">
-      <p>Licensing varies by module: standalone core libraries ship Apache 2.0, while several bridge packages document MIT.</p>
+      <p>All 15 modules are released under the Apache 2.0 license.</p>
       <p>&copy; <span id="year">2026</span> Dust</p>
     </div>
   </footer>
